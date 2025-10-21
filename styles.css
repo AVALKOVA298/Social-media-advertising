@@ -216,3 +216,56 @@ section h2 {
 @media (max-width: 820px) {
   .highlight-numbers { flex-direction:column; align-items:center;}
 }
+.project-desc {
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+    background: linear-gradient(90deg, #eaf4ff 56%, #f7fbff 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 22px #e7ebfc;
+    padding: 32px 36px 28px 30px;
+    margin-bottom: 26px;
+}
+.desc-icon {
+    font-size: 3.6em;
+    margin-top: 8px;
+    color: #256ee7;
+}
+.desc-core p {
+    margin-bottom: 19px;
+    color: #19336f;
+    font-size: 1.12em;
+    line-height: 1.48em;
+}
+.desc-keypoints {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.desc-key {
+    background: #fff;
+    box-shadow: 0 2px 12px #ddecf8;
+    border-radius: 14px;
+    display: flex;
+    gap: 14px;
+    align-items: start;
+    padding: 17px 19px 14px 16px;
+    min-width: 210px;
+    max-width: 330px;
+    flex: 1 1 220px;
+}
+.desc-key span {
+    font-size: 2em; margin-top: 2px;
+}
+.desc-key strong {
+    color: #256ee7; font-weight: 700;
+}
+.desc-key div {
+    color: #203e5f; margin-top: 2px;
+    font-size: 1.06em;
+}
+/* Responsive block for mobile */
+@media (max-width:900px) {
+  .project-desc {flex-direction:column;}
+  .desc-keypoints {flex-direction:column;}
+}
