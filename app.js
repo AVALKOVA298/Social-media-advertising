@@ -16,7 +16,7 @@ document.getElementById('roi-demo').innerHTML = `
             <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value">
             <output id="engVal">5</output>
         </label><br>
-        <label>Channel: 
+        <label>Channel:
             <select id="channel">
                 <option>Facebook</option>
                 <option>Instagram</option>
@@ -24,7 +24,7 @@ document.getElementById('roi-demo').innerHTML = `
                 <option>LinkedIn</option>
             </select>
         </label>
-        <label>Audience: 
+        <label>Audience:
             <select id="audience">
                 <option>All Ages</option>
                 <option>18-35</option>
@@ -37,7 +37,6 @@ document.getElementById('roi-demo').innerHTML = `
     <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
 `;
 
-// Фейковая формула расчёта ROI
 function calcROI() {
     const duration = Number(document.getElementById('duration').value);
     const conversion = Number(document.getElementById('conversion').value);
