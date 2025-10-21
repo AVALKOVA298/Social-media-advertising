@@ -1,22 +1,21 @@
-document.getElementById('app').innerHTML = `
-    <h2>Description of the Project</h2>
-    <ul>
-      <li>Data cleaning and preprocessing</li>
-      <li>Feature engineering and encoding</li>
-      <li>Model training with neural networks (MLP)</li>
-      <li>Interactive ROI prediction widget (in Colab)</li>
-    </ul>
-    <p>
-      See the <a href="README.md" target="_blank">README.md</a> for full details.<br>
-      Launch the full interactive demo in Google Colab above.
-    </p>
-`;
 document.getElementById('roi-demo').innerHTML = `
-    <form id="roi-form">
-        <label>Duration (days): <input type="range" id="duration" min="1" max="30" value="14" oninput="durationVal.value=this.value"><output id="durationVal">14</output></label><br>
-        <label>Conversion Rate: <input type="range" step="0.01" id="conversion" min="0.01" max="0.3" value="0.15" oninput="convVal.value=this.value"><output id="convVal">0.15</output></label><br>
-        <label>Acquisition Cost: <input type="range" id="acquisition" min="100" max="3000" value="1050" oninput="acqVal.value=this.value"><output id="acqVal">1050</output></label><br>
-        <label>Engagement Score: <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value"><output id="engVal">5</output></label><br>
+    <form id="roi-form" autocomplete="off">
+        <label>Duration (days): 
+            <input type="range" id="duration" min="1" max="30" value="14" oninput="durationVal.value=this.value">
+            <output id="durationVal">14</output>
+        </label><br>
+        <label>Conversion Rate: 
+            <input type="range" step="0.01" id="conversion" min="0.01" max="0.3" value="0.15" oninput="convVal.value=this.value">
+            <output id="convVal">0.15</output>
+        </label><br>
+        <label>Acquisition Cost: 
+            <input type="range" id="acquisition" min="100" max="3000" value="1050" oninput="acqVal.value=this.value">
+            <output id="acqVal">1050</output>
+        </label><br>
+        <label>Engagement Score: 
+            <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value">
+            <output id="engVal">5</output>
+        </label><br>
         <label>Channel: 
             <select id="channel">
                 <option>Facebook</option>
@@ -32,20 +31,40 @@ document.getElementById('roi-demo').innerHTML = `
                 <option>36-50</option>
             </select>
         </label>
-        <br><button type="submit" class="btn">Calculate ROI</button>
+        <br>
     </form>
-    <div id="roi-result" style="margin-top:16px;font-size:1.3em;font-weight:bold;"></div>
+    <div id="roi-result" style="margin:20px 0 10px 2px;font-size:1.24em;font-weight:bold;"></div>
+    <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
 `;
 
-document.getElementById('roi-form').onsubmit = function(e){
-    e.preventDefault();
-    // "Фейковая" формула для примера (адаптируй по желанию)
+// Фейковая формула расчёта ROI
+function calcROI() {
     const duration = Number(document.getElementById('duration').value);
     const conversion = Number(document.getElementById('conversion').value);
     const acquisition = Number(document.getElementById('acquisition').value);
     const engagement = Number(document.getElementById('engagement').value);
     const channel = document.getElementById('channel').value;
-    const channelMultiplier = channel === 'Instagram' ? 1.15 : (channel === 'Facebook' ? 1.05 : 0.93);
-    const roi = Math.max(0, (conversion * engagement * duration * channelMultiplier * 1000 / (acquisition+1500)).toFixed(2));
-    document.getElementById('roi-result').innerHTML = `Predicted ROI: <span style="color:#256ee7">${roi}</span>`;
+    let multiplier = 1;
+    if (channel === "Instagram") multiplier = 1.18;
+    if (channel === "Facebook") multiplier = 1.08;
+    if (channel === "Twitter") multiplier = 0.97;
+    if (channel === "LinkedIn") multiplier = 0.88;
+
+    const roi = Math.max(0, (conversion * engagement * duration * multiplier * 850 / (acquisition + 900)).toFixed(2));
+    return roi;
 }
+function updateROI() {
+    const roi = calcROI();
+    let color = "#256ee7";
+    let comment = "";
+    if (roi >= 3) { color = "#209b4e"; comment = "Excellent ROI! 🚀"; }
+    else if (roi >= 1) { color = "#b6a619"; comment = "Average ROI (consider optimizing)"; }
+    else { color = "#be2d2d"; comment = "Low ROI: adjust parameters!"; }
+
+    document.getElementById('roi-result').innerHTML = `Predicted ROI: <span style="color:${color}">${roi}</span>`;
+    document.getElementById('roi-comment').innerHTML = comment;
+}
+["duration","conversion","acquisition","engagement","channel","audience"].forEach(id=>{
+    document.getElementById(id).addEventListener('input',updateROI);
+});
+updateROI();
