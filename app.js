@@ -73,3 +73,25 @@ options: {
   },
   // (остальные опции)
 }
+options: {
+  animation: {
+    duration: 1700,
+    easing: 'easeOutElastic'
+  },
+  //...
+}
+plugins: {
+  datalabels: {
+    anchor: 'end',
+    align: 'end',
+    color: '#256ee7',
+    font: { weight: 'bold', size: 16 }
+  }
+}
+backgroundColor: [
+  'rgba(37,110,231, 0.75)',    // синий-фиолетовый
+  'rgba(68,196,161, 0.68)',    // зелёно-бирюзовый
+  'rgba(243,165,50, 0.72)',    // солнечно-жёлтый
+  'rgba(255,187,104, 0.65)',   // мягкий оранжевый
+  'rgba(168,144,253, 0.68)'    // светло-фиолетовый
+]
