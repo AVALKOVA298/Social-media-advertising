@@ -383,10 +383,71 @@ h1, h2, h3 {
   box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Цвета иконок */
+body {
+  background: linear-gradient(120deg, #eaf4fd 0%, #fff7e5 100%);
+}
+
+.card, .info-card, .number-card, .recommend-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(160,190,255,0.14);
+  background: #F9FBFF;
+  transition: box-shadow 0.25s, transform 0.22s;
+}
+
+.info-card {
+  background: linear-gradient(125deg, #e4efff 65%, #e8faf7 100%);
+}
+
+.number-card {
+  background: linear-gradient(112deg, #ffece6 55%, #f9f4ff 100%);
+}
+
+.recommend-card {
+  background: linear-gradient(120deg, #e7fde9 65%, #ffe7ef 100%);
+}
+
+.btn, .readme-link {
+  background: linear-gradient(90deg, #256ee7 50%, #44c4a1 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px #e4efff;
+  border-radius: 21px;
+  font-weight: bold;
+  padding: 11px 26px;
+  font-size: 1.07em;
+  letter-spacing: 0.02em;
+  transition: background 0.20s;
+}
+.btn:hover, .readme-link:hover {
+  background: linear-gradient(90deg, #1a2a4f 0%, #44c4a1 100%);
+}
+
+header {
+  background: linear-gradient(95deg, #f6fbff 60%, #eaf3fa 100%);
+  padding: 28px 0 18px 0;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 2px 16px #c6dcfa;
+}
+footer {
+  background: #eaf3fa;
+  padding: 24px 0;
+  text-align: center;
+  color: #154073;
+  border-radius: 24px 24px 0 0;
+  font-size: 1.09em;
+  letter-spacing: 0.01em;
+}
+
+.analytics-table th:nth-child(2) { color: #44c4a1; }
+.analytics-table th:nth-child(3) { color: #f3a532; }
+.analytics-table tr:nth-child(even) td { background: #eff7ff; }
+
+.info-icon {
+  background: #fff6e5;
+  color: #f3a532;
+}
 .icon-performance { background:#E4EFFF; color:#256EE7; }
-.icon-learning { background:#E6F8F5; color:#44C4A1; }
-.icon-efficiency { background:#FFF6E5; color:#FDCB4E; }
-.icon-risk { background:#FFE9EB; color:#FF6B6B; }
-.icon-insight { background:#F2EEFF; color:#8B5CF6; }
-.icon-growth { background:#EBFFF4; color:#2FC982; }
+.icon-learning    { background:#E6F8F5; color:#44C4A1; }
+.icon-efficiency  { background:#FFF6E5; color:#FDCB4E; }
+.icon-risk        { background:#FFE9EB; color:#FF6B6B; }
+.icon-insight     { background:#F2EEFF; color:#8B5CF6; }
+.icon-growth      { background:#EBFFF4; color:#2FC982; }
