@@ -74,26 +74,29 @@
 </section>
 
 <section>
-  <h2>Machine Learning Model Training</h2>
-  <div class="ml-model-block">
-    <p>
-      The neural network was trained in Google Colab using the Keras API.<br>
-      Key parameters: <b>epochs = 30</b>, <b>batch_size = 32</b>, validation split on test data.
-    </p>
-    <pre style="background:#f8fafb;padding:16px 13px;font-size:1em;border-radius:6px;max-width:98vw;overflow-x:auto;">
-history = model.fit(
-    X_train, y_train,
-    epochs=30,
-    batch_size=32,
-    validation_data=(X_test, y_test)
-)
-Epoch 1/30 ... (example output, part of training log)
-    </pre>
-    <div style="max-width:540px;">
-      <canvas id="ml-loss-chart"></canvas>
+  <h2>Model Training</h2>
+  <div id="training-status" class="training-status-card">
+    <div id="status-message">Model not trained. Click "Train Model" to start!</div>
+    <ul id="status-steps">
+      <li>Loading training data ...</li>
+      <li>Preprocessing features ...</li>
+      <li>Building neural network ...</li>
+      <li>Training model ...</li>
+    </ul>
+    <div id="training-progress-bar" class="progress-bar">
+      <div id="progress-inner"></div>
     </div>
+    <div class="metrics-grid" style="display: flex; gap: 30px; margin-top:18px;">
+      <div><span id="epoch-val">0</span><br>Epoch</div>
+      <div><span id="loss-val">—</span><br>Loss</div>
+      <div><span id="val-loss-val">—</span><br>Val Loss</div>
+      <div><span id="mae-val">—</span><br>MAE</div>
+    </div>
+    <button id="train-model-btn" style="margin-top:24px">Train Model</button>
+    <button id="reset-model-btn" style="margin-top:24px; margin-left:16px;">Reset</button>
   </div>
 </section>
+<canvas id="live-loss-chart" style="margin-top:22px;max-width:600px;"></canvas>
 
 <section>
   <h2>Data Analytics Insights</h2>
