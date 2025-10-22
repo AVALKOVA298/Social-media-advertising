@@ -100,115 +100,18 @@ const duration = document.getElementById('duration');
 const conversion = document.getElementById('conversion');
 const cost = document.getElementById('cost');
 const engagement = document.getElementById('engagement');
-const roiResult = document.getElementById('roi-result');
 const channel = document.getElementById('channel');
 const audience = document.getElementById('audience');
-
-function calcROI() {
-  // пример формулы
-  let roi = ((+duration.value) * (+conversion.value) * (+engagement.value)) / (+cost.value/1000 + 2);
-  roiResult.textContent = roi.toFixed(2);
-}
-[duration, conversion, cost, engagement, channel, audience].forEach(el => 
-  el.addEventListener('input', calcROI));
-calcROI();
-document.getElementById('roi-demo').innerHTML = `
-    <form id="roi-form" autocomplete="off">
-        <label>Duration (days): 
-            <input type="range" id="duration" min="1" max="30" value="14" oninput="durationVal.value=this.value">
-            <output id="durationVal">14</output>
-        </label><br>
-        <label>Conversion Rate: 
-            <input type="range" step="0.01" id="conversion" min="0.01" max="0.3" value="0.15" oninput="convVal.value=this.value">
-            <output id="convVal">0.15</output>
-        </label><br>
-        <label>Acquisition Cost: 
-            <input type="range" id="acquisition" min="100" max="3000" value="1050" oninput="acqVal.value=this.value">
-            <output id="acqVal">1050</output>
-        </label><br>
-        <label>Engagement Score: 
-            <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value">
-            <output id="engVal">5</output>
-        </label><br>
-        <label>Channel: 
-            <select id="channel">
-                <option>Facebook</option>
-                <option>Instagram</option>
-                <option>Twitter</option>
-                <option>LinkedIn</option>
-            </select>
-        </label>
-        <label>Audience: 
-            <select id="audience">
-                <option>All Ages</option>
-                <option>18-35</option>
-                <option>36-50</option>
-            </select>
-        </label>
-        <br>
-    </form>
-    <div id="roi-result" style="margin:20px 0 10px 2px;font-size:1.24em;font-weight:bold;"></div>
-    <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
-`;
-
-// Калькулятор ROI demo — JS Version
-document.getElementById('roi-demo').innerHTML = `
-    <form id="roi-form" autocomplete="off">
-        <label>Duration (days): 
-            <input type="range" id="duration" min="1" max="30" value="14" oninput="durationVal.value=this.value">
-            <output id="durationVal">14</output>
-        </label><br>
-        <label>Conversion Rate: 
-            <input type="range" step="0.01" id="conversion" min="0.01" max="0.3" value="0.15" oninput="convVal.value=this.value">
-            <output id="convVal">0.15</output>
-        </label><br>
-        <label>Acquisition Cost: 
-            <input type="range" id="acquisition" min="100" max="3000" value="1050" oninput="acqVal.value=this.value">
-            <output id="acqVal">1050</output>
-        </label><br>
-        <label>Engagement Score: 
-            <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value">
-            <output id="engVal">5</output>
-        </label><br>
-        <label>Channel:
-            <select id="channel">
-                <option>Facebook</option>
-                <option>Instagram</option>
-                <option>Twitter</option>
-                <option>LinkedIn</option>
-            </select>
-        </label>
-        <label>Audience:
-            <select id="audience">
-                <option>All Ages</option>
-                <option>18-35</option>
-                <option>36-50</option>
-            </select>
-        </label>
-        <br>
-    </form>
-    <div id="roi-result" style="margin:20px 0 10px 2px;font-size:1.24em;font-weight:bold;"></div>
-    <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
-`;
-
-const duration = document.getElementById('duration');
-const conversion = document.getElementById('conversion');
-const cost = document.getElementById('cost');
-const engagement = document.getElementById('engagement');
 const roiResult = document.getElementById('roi-result');
 const roiStatus = document.getElementById('roi-status');
-const channel = document.getElementById('channel');
-const audience = document.getElementById('audience');
 
 function calcROI() {
-  // Демонстрационная формула
-  let roi = ((+duration.value) * (+conversion.value) * (+engagement.value)) / (+cost.value / 1000 + 1.5);
+  let roi = ((+duration.value) * (+conversion.value) * (+engagement.value)) / (+cost.value/1000 + 1.5);
   roiResult.textContent = roi.toFixed(2);
 
-  // Цветовая и текстовая оценка
   roiStatus.className = "roi-status";
   if (roi >= 3) {
-    roiStatus.textContent = "Excellent ROI!";
+    roiStatus.textContent = "Excellent ROI! 🚀";
     roiStatus.classList.add("roi-good");
   } else if (roi >= 1.5) {
     roiStatus.textContent = "Average ROI";
@@ -222,4 +125,3 @@ function calcROI() {
 [duration, conversion, cost, engagement, channel, audience].forEach(el =>
   el.addEventListener('input', calcROI));
 calcROI();
-
