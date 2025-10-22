@@ -80,51 +80,72 @@ function calcROI() {
 // Запускаем первый расчет при загрузке
 calcROI();
 
-const ctxLoss = document.getElementById('ml-loss-chart').getContext('2d');
-new Chart(ctxLoss, {
-  type: 'line',
-  data: {
-    labels: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-      11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-      21, 22, 23, 24, 25, 26, 27, 28, 29, 30
-    ],
-    datasets: [
-      {
-        label: 'Training Loss',
-        data: [
-          5.2612, 4.0602, 4.0910, 4.0499, 4.0179, 4.0298, 4.0440, 3.9966, 3.9950, 4.0171,
-          3.9918, 3.9968, 3.9735, 4.0046, 3.9782, 3.9604, 3.9322, 3.9441, 3.9709, 3.9215,
-          3.9483, 3.9300, 3.9385, 3.9387, 3.9125, 3.9132, 3.9371, 3.9307, 3.9238, 3.9036
-        ],
-        borderColor: '#256ee7',
-        backgroundColor: '#256ee7',
-        fill: false,
-        tension: 0.1
-      },
-      {
-        label: 'Validation Loss',
-        data: [
-          4.1567, 4.1377, 4.1106, 4.0990, 4.1302, 4.1186, 4.1006, 4.0925, 4.1034, 4.1176,
-          4.1278, 4.1142, 4.1388, 4.1200, 4.1337, 4.1356, 4.1294, 4.1288, 4.1339, 4.1499,
-          4.1605, 4.1498, 4.1560, 4.1483, 4.1921, 4.1676, 4.1895, 4.1751, 4.1821, 4.1834
-        ],
-        borderColor: '#44c4a1',
-        backgroundColor: '#44c4a1',
-        fill: false,
-        tension: 0.1
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: 'top' },
-      title: { display: true, text: 'Model Training: Loss by Epoch' }
+const trainLoss = [
+  5.26,4.06,4.09,4.05,4.02,4.03,4.04,3.99,3.99,4.02,3.99,4.00,3.97,4.00,3.98,
+  3.96,3.93,3.94,3.97,3.92,3.94,3.93,3.94,3.94,3.91,3.91,3.94,3.93,3.92,3.90
+];
+const valLoss = [
+  4.16,4.14,4.11,4.10,4.13,4.12,4.10,4.09,4.10,4.12,
+  4.13,4.11,4.14,4.12,4.13,4.14,4.13,4.13,4.13,4.15,
+  4.16,4.15,4.16,4.15,4.19,4.17,4.19,4.18,4.18,4.18
+];
+const valMAE = [
+  1.61,1.60,1.60,1.60,1.61,1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.60,
+  1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.60,1.62,1.61,1.61,1.61,1.61,1.61
+];
+
+let trainEpoch = 0;
+let interval = null;
+let chart = null;
+
+function updatePanel() {
+  document.getElementById('epoch-val').textContent = trainEpoch === 0 ? 0 : trainEpoch;
+  document.getElementById('loss-val').textContent = trainEpoch === 0 ? '—' : trainLoss[trainEpoch-1].toFixed(2);
+  document.getElementById('val-loss-val').textContent = trainEpoch === 0 ? '—' : valLoss[trainEpoch-1].toFixed(2);
+  document.getElementById('mae-val').textContent = trainEpoch === 0 ? '—' : valMAE[trainEpoch-1].toFixed(2);
+
+  var progress = Math.round((trainEpoch / trainLoss.length) * 100);
+  document.getElementById('progress-inner').style.width = progress + "%";
+  document.getElementById('progress-inner').textContent = progress + "%";
+  document.getElementById('status-message').textContent =
+    trainEpoch === trainLoss.length ? "Model ready! You can now predict ROI." :
+    trainEpoch === 0 ? "Model not trained. Click 'Train Model' to start!" : "Training model (" + progress + "%)...";
+}
+
+function drawChart(epoch) {
+  if(chart) chart.destroy();
+  chart = new Chart(document.getElementById('live-loss-chart').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: Array.from({length: epoch}, (_,i) => i+1),
+      datasets: [{
+        label: 'Training Loss', data: trainLoss.slice(0,epoch),
+        borderColor: '#256ee7', fill: false, tension:0.1
+      },{
+        label: 'Validation Loss', data: valLoss.slice(0,epoch),
+        borderColor: '#44c4a1', fill: false, tension:0.1
+      }]
     },
-    scales: {
-      x: { title: { display: true, text: 'Epoch' } },
-      y: { title: { display: true, text: 'Loss' }, beginAtZero: false }
+    options: {
+      animation: {duration: 500},
+      plugins: {legend: {position:'top'}, title: {display:true,text:'Step-by-Step Training'}},
+      scales: { x:{title:{display:true,text:'Epoch'}},y:{beginAtZero:false,title:{display:true,text:'Loss'}} }
     }
-  }
-});
+  });
+}
+
+document.getElementById('train-model-btn').onclick = function() {
+  if(trainEpoch === trainLoss.length) return;
+  interval = setInterval(() => {
+    if(trainEpoch < trainLoss.length) {
+      trainEpoch++;
+      updatePanel(); drawChart(trainEpoch);
+    } else { clearInterval(interval); }
+  }, 500);
+};
+document.getElementById('reset-model-btn').onclick = function() {
+  trainEpoch = 0; updatePanel(); drawChart(trainEpoch); clearInterval(interval);
+};
+
+// Первый запуск
+updatePanel(); drawChart(trainEpoch);
