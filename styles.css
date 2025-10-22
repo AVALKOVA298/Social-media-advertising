@@ -610,3 +610,51 @@ footer {
   .highlight-grid { flex-direction: column; gap:22px;}
   .highlight-card {max-width:100%;}
 }
+.analytics-visuals {
+  margin: 40px 0 46px 0;
+  background: linear-gradient(120deg, #eaf4fd 70%, #fff8e9 100%);
+  padding: 36px 30px 42px 30px;
+  border-radius: 22px;
+  box-shadow: 0 4px 32px #e6ecfa;
+}
+
+.analytics-visuals h2 {
+  font-size: 2.1em;
+  margin-bottom: 24px;
+  color: #256ee7;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.chart-desc {
+  background: #f8fbff;
+  border-radius: 17px;
+  box-shadow: 0 3px 16px #e0eefd88;
+  margin-bottom: 34px;
+  padding: 18px 18px 36px 18px;
+}
+
+.chart-desc h3 {
+  color: #1A2A4F;
+  font-size: 1.23em;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.chart-explainer {
+  background: #eafaf2;
+  border-radius: 12px;
+  padding: 11px 18px;
+  max-width: 540px;
+  font-size: 1.06em;
+  color: #28634f;
+  margin-bottom: 22px;
+  margin-top: 0;
+  box-shadow: 0 2px 8px #e8f9f4;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .analytics-visuals {padding: 14px 0 14px 0;}
+  .chart-desc, .chart-explainer {padding: 8px;}
+}
