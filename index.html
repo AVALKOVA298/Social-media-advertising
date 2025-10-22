@@ -193,6 +193,20 @@ new Chart(document.getElementById('featureImportance'), {
 });
 </script>
 
+<section class="analytics-visuals">
+  <h2>Visual Data Insights</h2>
+  <div class="chart-desc">
+    <h3>ROI Distribution</h3>
+    <p class="chart-explainer">This histogram shows the distribution of campaign ROI values based on the dataset. Most campaigns achieve an ROI between 2 and 3 — only a few are below 1 or above 4.</p>
+    <canvas id="roiDistribution"></canvas>
+  </div>
+  <div class="chart-desc">
+    <h3>Feature Importance</h3>
+    <p class="chart-explainer">This bar chart illustrates which features have the greatest impact on the model’s ROI predictions. Engagement and channel selection are the most influential metrics.</p>
+    <canvas id="featureImportance"></canvas>
+  </div>
+</section>
+
         <section>
             <h2>Colab Demo</h2>
             <a class="btn" href="https://github.com/AVALKOVA298/Social-media-advertising/commit/24ab2a706eb4805241ba7a450b05fbfebc3e7cfc" target="_blank">
