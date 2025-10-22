@@ -557,3 +557,56 @@ footer {
   .highlight-row, .recommend-row {flex-direction:column;gap:18px;}
   section {max-width:98vw;}
 }
+
+.highlight-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  margin: 32px 0 24px 0;
+}
+
+.highlight-card {
+  flex: 1;
+  min-width: 140px;
+  max-width: 220px;
+  border-radius: 19px;
+  padding: 27px 15px 15px 15px;
+  box-shadow: 0 5px 24px rgba(160,190,255,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f9fbff;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.highlight-card:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 12px 32px rgba(37,110,231,0.17);
+}
+.highlight-card span {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #256ee7;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  display: block;
+}
+.highlight-card p {
+  font-size: 1.09em;
+  color: #273849;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Цвета карточек */
+.highlight-blue { background: linear-gradient(135deg, #e4efff 75%, #fafdff 100%);}
+.highlight-green { background: linear-gradient(120deg, #e6fcf1 80%, #f7fffa 100%);}
+.highlight-orange{ background: linear-gradient(115deg,#fff3e6 75%, #fffafb 100%);}
+.highlight-yellow{ background: linear-gradient(125deg,#fffae3 85%, #fffdf3 100%);}
+  
+/* Адаптив (мобильная сетка) */
+@media (max-width:900px) {
+  .highlight-grid { flex-direction: column; gap:22px;}
+  .highlight-card {max-width:100%;}
+}
