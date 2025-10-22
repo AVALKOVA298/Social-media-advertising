@@ -701,3 +701,23 @@ canvas {
   margin-top: 20px;
   color: #256ee7;
 }
+
+.demo-block {
+    background: #f8fbff;
+    border: 1.5px solid #e2eafc;
+    border-radius: 14px;
+    padding: 20px 30px 18px 24px;
+    margin: 18px 0 26px 0;
+    box-shadow: 0 2px 9px #e1e8fb;
+}
+.demo-block label {
+    display: block; 
+    margin: 12px 0 7px 0;
+    font-weight: 500;
+    color: #223b77;
+}
+.demo-block input[type=range] { width: 120px; vertical-align:middle; margin: 0 9px 0 14px;}
+.demo-block select { margin: 0 0 0 10px; min-width: 95px; }
+.demo-block output { margin-left: 5px; color: #082d80; font-weight: 700;}
+#roi-result { font-size: 1.20em; }
+#roi-comment { margin-bottom: 5px; }
