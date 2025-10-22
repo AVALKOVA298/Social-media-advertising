@@ -125,3 +125,6 @@ function calcROI() {
 [duration, conversion, cost, engagement, channel, audience].forEach(el =>
   el.addEventListener('input', calcROI));
 calcROI();
+<script src="app.js"></script>
+</body>
+</html>
