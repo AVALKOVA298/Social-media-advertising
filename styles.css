@@ -658,3 +658,7 @@ footer {
   .analytics-visuals {padding: 14px 0 14px 0;}
   .chart-desc, .chart-explainer {padding: 8px;}
 }
+canvas {
+  box-shadow: 0 8px 32px rgba(37,110,231,0.12), 0 2px 8px #c9e2fa;
+  border-radius: 14px;
+}
