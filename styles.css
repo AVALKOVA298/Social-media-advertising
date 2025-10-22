@@ -729,7 +729,7 @@ canvas {
 input[type=range] { width: 140px; margin-top: 7px;}
 select { margin-top: 7px;}
 .result { font-weight: 600; font-size: 1.22em; margin-top: 22px;}
-.roi-status { font-weight: 500; font-size: 1.14em; margin-left: 15px; }
+.roi-status { font-weight: 600; font-size: 1.1em; margin-left: 18px; }
 .roi-good { color: #2ec57a; }
 .roi-average { color: #ffa900; }
 .roi-bad { color: #e94c4c; }
