@@ -191,36 +191,35 @@ document.getElementById('roi-demo').innerHTML = `
     <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
 `;
 
-// Простая имитация формулы ROI (адаптируй по желанию)
+const duration = document.getElementById('duration');
+const conversion = document.getElementById('conversion');
+const cost = document.getElementById('cost');
+const engagement = document.getElementById('engagement');
+const roiResult = document.getElementById('roi-result');
+const roiStatus = document.getElementById('roi-status');
+const channel = document.getElementById('channel');
+const audience = document.getElementById('audience');
+
 function calcROI() {
-    const duration = Number(document.getElementById('duration').value);
-    const conversion = Number(document.getElementById('conversion').value);
-    const acquisition = Number(document.getElementById('acquisition').value);
-    const engagement = Number(document.getElementById('engagement').value);
-    const channel = document.getElementById('channel').value;
-    let multiplier = 1;
-    if (channel === "Instagram") multiplier = 1.18;
-    if (channel === "Facebook") multiplier = 1.08;
-    if (channel === "Twitter") multiplier = 0.97;
-    if (channel === "LinkedIn") multiplier = 0.88;
+  // Демонстрационная формула
+  let roi = ((+duration.value) * (+conversion.value) * (+engagement.value)) / (+cost.value / 1000 + 1.5);
+  roiResult.textContent = roi.toFixed(2);
 
-    const roi = Math.max(0, (conversion * engagement * duration * multiplier * 850 / (acquisition + 900)).toFixed(2));
-    return roi;
+  // Цветовая и текстовая оценка
+  roiStatus.className = "roi-status";
+  if (roi >= 3) {
+    roiStatus.textContent = "Excellent ROI!";
+    roiStatus.classList.add("roi-good");
+  } else if (roi >= 1.5) {
+    roiStatus.textContent = "Average ROI";
+    roiStatus.classList.add("roi-average");
+  } else {
+    roiStatus.textContent = "Low ROI";
+    roiStatus.classList.add("roi-bad");
+  }
 }
 
-function updateROI() {
-    const roi = calcROI();
-    let color = "#256ee7";
-    let comment = "";
-    if (roi >= 3) { color = "#209b4e"; comment = "Excellent ROI! 🚀"; }
-    else if (roi >= 1) { color = "#b6a619"; comment = "Average ROI (consider optimizing)"; }
-    else { color = "#be2d2d"; comment = "Low ROI: adjust parameters!"; }
+[duration, conversion, cost, engagement, channel, audience].forEach(el =>
+  el.addEventListener('input', calcROI));
+calcROI();
 
-    document.getElementById('roi-result').innerHTML = `Predicted ROI: <span style="color:${color}">${roi}</span>`;
-    document.getElementById('roi-comment').innerHTML = comment;
-}
-
-["duration","conversion","acquisition","engagement","channel","audience"].forEach(id=>{
-    document.getElementById(id).addEventListener('input',updateROI);
-});
-updateROI();
