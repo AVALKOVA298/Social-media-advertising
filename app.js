@@ -95,3 +95,20 @@ backgroundColor: [
   'rgba(255,187,104, 0.65)',   // мягкий оранжевый
   'rgba(168,144,253, 0.68)'    // светло-фиолетовый
 ]
+
+const duration = document.getElementById('duration');
+const conversion = document.getElementById('conversion');
+const cost = document.getElementById('cost');
+const engagement = document.getElementById('engagement');
+const roiResult = document.getElementById('roi-result');
+const channel = document.getElementById('channel');
+const audience = document.getElementById('audience');
+
+function calcROI() {
+  // пример формулы
+  let roi = ((+duration.value) * (+conversion.value) * (+engagement.value)) / (+cost.value/1000 + 2);
+  roiResult.textContent = roi.toFixed(2);
+}
+[duration, conversion, cost, engagement, channel, audience].forEach(el => 
+  el.addEventListener('input', calcROI));
+calcROI();
