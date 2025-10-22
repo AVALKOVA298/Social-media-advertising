@@ -203,17 +203,15 @@ new Chart(document.getElementById('featureImportance'), {
         </section>
 
 <section>
-    <h2>ROI Calculator (Demo)</h2>
-    <div id="roi-demo" class="demo-block"></div>
-    <!-- Калькулятор начинается здесь -->
-      <label>Duration (days):<input type="range" min="5" max="30" value="14"></label>
-      <!-- аналогично для Conversion Rate, Cost, Engagement -->
-      <label>Conversion Rate:<input type="range" min="0" max="1" step="0.01" value="0.15"></label>
-      <label>Acquisition Cost:<input type="range" min="100" max="3000" value="1050"></label>
-      <label>Engagement Score:<input type="range" min="1" max="10" value="5"></label>
-      <select>...</select>
-      <div class="result">Predicted ROI: <span id="roi-result"></span></div>
-    </div>
+  <h2>ROI Calculator (Demo)</h2>
+  <div id="roi-demo" class="demo-block">
+    <label>Duration (days): <input type="range" min="5" max="30" value="14"></label>
+    <label>Conversion Rate: <input type="range" min="0" max="1" step="0.01" value="0.15"></label>
+    <label>Acquisition Cost: <input type="range" min="100" max="3000" value="1050"></label>
+    <label>Engagement Score: <input type="range" min="1" max="10" value="5"></label>
+    <select>...</select>
+    <div class="result">Predicted ROI: <span id="roi-result"></span></div>
+  </div>
 </section>
 
         <section>
