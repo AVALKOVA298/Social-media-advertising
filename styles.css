@@ -305,29 +305,34 @@ section h2 {
     align-items: center;
     gap: 24px;
     background: linear-gradient(100deg, #f0f6ff 55%, #eaf3fa 100%);
-    border-radius: 14px;
-    box-shadow: 0 2px 13px #e0e8fc;
-    padding: 27px 32px 24px 30px;
-    margin-bottom: 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(180, 200, 255, 0.4);
+    padding: 30px 34px 26px 30px;
+    margin-bottom: 32px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.readme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(37, 110, 231, 0.25);
 }
 .readme-icon {
     font-size: 3.2em;
-    color: #256ee7;
+    color: #256EE7;
 }
 .readme-link {
     display: inline-block;
-    background: #256ee7;
-    color: #fff;
-    padding: 9px 24px;
-    margin-top: 8px;
-    border-radius: 20px;
+    background: #256EE7;
+    color: white;
+    padding: 10px 26px;
+    margin-top: 10px;
+    border-radius: 22px;
     font-size: 1.1em;
     font-weight: 600;
-    letter-spacing: 0.02em;
     text-decoration: none;
-    box-shadow: 0 1px 6px #d7e7ff;
-    transition: background 0.25s ease;
+    box-shadow: 0 2px 6px #c8dcff;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 .readme-link:hover {
-    background: #153a6d;
+    background: #184A99;
+    box-shadow: 0 4px 12px rgba(37, 110, 231, 0.35);
 }
