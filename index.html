@@ -203,8 +203,27 @@ new Chart(document.getElementById('featureImportance'), {
         </section>
 
 <section>
-    <h2>ROI Calculator (Demo)</h2>
-    <div id="roi-demo" class="demo-block"></div>
+  <h2>ROI Calculator (Demo)</h2>
+  <div id="roi-demo" class="demo-block">
+    <label>Duration (days):<input type="range" min="5" max="30" value="14" id="duration"></label>
+    <label>Conversion Rate:<input type="range" min="0" max="1" step="0.01" value="0.15" id="conversion"></label>
+    <label>Acquisition Cost:<input type="range" min="100" max="3000" value="1050" id="cost"></label>
+    <label>Engagement Score:<input type="range" min="1" max="10" value="5" id="engagement"></label>
+    <label>Channel:
+      <select id="channel">
+        <option>Facebook</option><option>Instagram</option><option>LinkedIn</option>
+      </select>
+    </label>
+    <label>Audience:
+      <select id="audience">
+        <option>All Ages</option><option>18–35</option><option>36–50</option>
+      </select>
+    </label>
+    <div class="result">
+      Predicted ROI: <span id="roi-result">0.00</span>
+      <span id="roi-status" class="roi-status"></span>
+    </div>
+  </div>
 </section>
 
 <section>
