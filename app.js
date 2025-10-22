@@ -67,3 +67,9 @@ function updateROI() {
     document.getElementById(id).addEventListener('input',updateROI);
 });
 updateROI();
+options: {
+  elements: {
+    bar: { borderRadius: 12 }
+  },
+  // (остальные опции)
+}
