@@ -74,6 +74,28 @@
 </section>
 
 <section>
+  <h2>Machine Learning Model Training</h2>
+  <div class="ml-model-block">
+    <p>
+      The neural network was trained in Google Colab using the Keras API.<br>
+      Key parameters: <b>epochs = 30</b>, <b>batch_size = 32</b>, validation split on test data.
+    </p>
+    <pre style="background:#f8fafb;padding:16px 13px;font-size:1em;border-radius:6px;max-width:98vw;overflow-x:auto;">
+history = model.fit(
+    X_train, y_train,
+    epochs=30,
+    batch_size=32,
+    validation_data=(X_test, y_test)
+)
+Epoch 1/30 ... (example output, part of training log)
+    </pre>
+    <div style="max-width:540px;">
+      <canvas id="ml-loss-chart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section>
   <h2>Data Analytics Insights</h2>
   <div class="info-cards">
     <div class="info-card">
