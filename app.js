@@ -80,3 +80,51 @@ function calcROI() {
 // Запускаем первый расчет при загрузке
 calcROI();
 
+const ctxLoss = document.getElementById('ml-loss-chart').getContext('2d');
+new Chart(ctxLoss, {
+  type: 'line',
+  data: {
+    labels: [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+      11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+      21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+    ],
+    datasets: [
+      {
+        label: 'Training Loss',
+        data: [
+          5.2612, 4.0602, 4.0910, 4.0499, 4.0179, 4.0298, 4.0440, 3.9966, 3.9950, 4.0171,
+          3.9918, 3.9968, 3.9735, 4.0046, 3.9782, 3.9604, 3.9322, 3.9441, 3.9709, 3.9215,
+          3.9483, 3.9300, 3.9385, 3.9387, 3.9125, 3.9132, 3.9371, 3.9307, 3.9238, 3.9036
+        ],
+        borderColor: '#256ee7',
+        backgroundColor: '#256ee7',
+        fill: false,
+        tension: 0.1
+      },
+      {
+        label: 'Validation Loss',
+        data: [
+          4.1567, 4.1377, 4.1106, 4.0990, 4.1302, 4.1186, 4.1006, 4.0925, 4.1034, 4.1176,
+          4.1278, 4.1142, 4.1388, 4.1200, 4.1337, 4.1356, 4.1294, 4.1288, 4.1339, 4.1499,
+          4.1605, 4.1498, 4.1560, 4.1483, 4.1921, 4.1676, 4.1895, 4.1751, 4.1821, 4.1834
+        ],
+        borderColor: '#44c4a1',
+        backgroundColor: '#44c4a1',
+        fill: false,
+        tension: 0.1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' },
+      title: { display: true, text: 'Model Training: Loss by Epoch' }
+    },
+    scales: {
+      x: { title: { display: true, text: 'Epoch' } },
+      y: { title: { display: true, text: 'Loss' }, beginAtZero: false }
+    }
+  }
+});
