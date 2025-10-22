@@ -151,7 +151,47 @@ document.getElementById('roi-demo').innerHTML = `
     <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
 `;
 
-// Фейковая формула расчёта ROI
+// Калькулятор ROI demo — JS Version
+document.getElementById('roi-demo').innerHTML = `
+    <form id="roi-form" autocomplete="off">
+        <label>Duration (days): 
+            <input type="range" id="duration" min="1" max="30" value="14" oninput="durationVal.value=this.value">
+            <output id="durationVal">14</output>
+        </label><br>
+        <label>Conversion Rate: 
+            <input type="range" step="0.01" id="conversion" min="0.01" max="0.3" value="0.15" oninput="convVal.value=this.value">
+            <output id="convVal">0.15</output>
+        </label><br>
+        <label>Acquisition Cost: 
+            <input type="range" id="acquisition" min="100" max="3000" value="1050" oninput="acqVal.value=this.value">
+            <output id="acqVal">1050</output>
+        </label><br>
+        <label>Engagement Score: 
+            <input type="range" id="engagement" min="1" max="10" value="5" oninput="engVal.value=this.value">
+            <output id="engVal">5</output>
+        </label><br>
+        <label>Channel:
+            <select id="channel">
+                <option>Facebook</option>
+                <option>Instagram</option>
+                <option>Twitter</option>
+                <option>LinkedIn</option>
+            </select>
+        </label>
+        <label>Audience:
+            <select id="audience">
+                <option>All Ages</option>
+                <option>18-35</option>
+                <option>36-50</option>
+            </select>
+        </label>
+        <br>
+    </form>
+    <div id="roi-result" style="margin:20px 0 10px 2px;font-size:1.24em;font-weight:bold;"></div>
+    <div id="roi-comment" style="font-size:1.04em;color:#174;"></div>
+`;
+
+// Простая имитация формулы ROI (адаптируй по желанию)
 function calcROI() {
     const duration = Number(document.getElementById('duration').value);
     const conversion = Number(document.getElementById('conversion').value);
@@ -167,6 +207,7 @@ function calcROI() {
     const roi = Math.max(0, (conversion * engagement * duration * multiplier * 850 / (acquisition + 900)).toFixed(2));
     return roi;
 }
+
 function updateROI() {
     const roi = calcROI();
     let color = "#256ee7";
@@ -178,6 +219,7 @@ function updateROI() {
     document.getElementById('roi-result').innerHTML = `Predicted ROI: <span style="color:${color}">${roi}</span>`;
     document.getElementById('roi-comment').innerHTML = comment;
 }
+
 ["duration","conversion","acquisition","engagement","channel","audience"].forEach(id=>{
     document.getElementById(id).addEventListener('input',updateROI);
 });
