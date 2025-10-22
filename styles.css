@@ -747,3 +747,17 @@ canvas#live-loss-chart {
   max-width: 650px;
   width: 100%;
 }
+
+.data-table th, .data-table td {
+  padding: 15px 13px;
+  border-bottom: 1px solid #ebf0fa;
+  text-align: left;
+  font-size: 1em;
+}
+.data-table th {
+  color: #256ee7;
+  font-weight: 700;
+}
+.data-table tr:last-child td {
+  border-bottom: none;
+}
