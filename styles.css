@@ -662,3 +662,42 @@ canvas {
   box-shadow: 0 8px 32px rgba(37,110,231,0.12), 0 2px 8px #c9e2fa;
   border-radius: 14px;
 }
+.demo-block {
+  margin-top: 18px;
+  padding: 34px 20px 20px 20px;
+  background: #f8fbff;
+  border-radius: 16px;
+  box-shadow: 0 2px 18px #e9effe;
+}
+
+.sliders-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px 22px;
+  align-items: flex-end;
+  margin-bottom: 22px;
+}
+
+.sliders-row label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  font-size: 1.09em;
+  min-width: 169px;
+}
+
+.demo-block input[type=range] {
+  width: 144px;
+  margin-top: 7px;
+}
+
+.demo-block select {
+  margin-top: 7px;
+}
+
+.result {
+  font-weight: 600;
+  font-size: 1.18em;
+  margin-top: 20px;
+  color: #256ee7;
+}
