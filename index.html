@@ -153,6 +153,46 @@
   </div>
 </section>
 
+        <section class="analytics-visuals">
+  <h2>Visual Data Insights</h2>
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>ROI Distribution</h3>
+      <canvas id="roiDistribution"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Feature Importance</h3>
+      <canvas id="featureImportance"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- Подключение Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// ROI Distribution example
+new Chart(document.getElementById('roiDistribution'), {
+  type: 'bar',
+  data: { labels: ['0-1','1-2','2-3','3-4','4+'],
+    datasets: [{ data: [4,10,17,9,3], backgroundColor: ['#f9c074','#44c4a1','#256ee7','#a890fd','#f3a532'] }]
+  },
+  options: { plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+});
+
+// Feature Importance example
+new Chart(document.getElementById('featureImportance'), {
+  type: 'bar',
+  data: {
+    labels: ['Engagement','Channel','Acquisition Cost','Conversion Rate','Duration'],
+    datasets: [{
+      data: [0.45, 0.22, 0.15, 0.12, 0.06],
+      backgroundColor: ['#256ee7','#44c4a1','#f3a532','#ffbb68','#a890fd',]
+    }]
+  },
+  options: { plugins:{legend:{display:false}}, indexAxis:'y', scales:{x:{beginAtZero:true, max:0.5}} }
+});
+</script>
+
         <section>
             <h2>Colab Demo</h2>
             <a class="btn" href="https://github.com/AVALKOVA298/Social-media-advertising/commit/24ab2a706eb4805241ba7a450b05fbfebc3e7cfc" target="_blank">
